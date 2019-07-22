@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.plantsguru.model.OC_Order;
 
-public interface OCOrderRepository extends CrudRepository<OC_Order, Integer> {
+public interface OCOrderRepository extends CrudRepository<OC_Order, Long> {
 
 }

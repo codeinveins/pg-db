@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class DainikBhaskarConfig {
  
   @Bean(name = "dbDataSource")
-  @ConfigurationProperties(prefix = "db.database")
+  @ConfigurationProperties(prefix = "db.datasource")
   public DataSource dataSource() {
     return DataSourceBuilder.create().build();
   }
