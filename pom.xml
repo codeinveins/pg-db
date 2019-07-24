@@ -12,7 +12,7 @@
 	<artifactId>dbhaskar</artifactId>
 	<version>1.0</version>
 	<name>pg-db</name>
-	<description>Promotion Event  </description>
+	<description>Promotion Event</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -30,14 +30,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-quartz</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

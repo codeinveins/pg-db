@@ -1,4 +1,4 @@
-package com.platsguru.db.config;
+package com.plantsguru.db.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -37,7 +37,7 @@ public class DainikBhaskarConfig {
     return
       builder
         .dataSource(dataSource)
-        .packages("com.plantsguru.db.domain")
+        .packages("com.plantsguru.db.model")
         .persistenceUnit("db")
         .build();
   }

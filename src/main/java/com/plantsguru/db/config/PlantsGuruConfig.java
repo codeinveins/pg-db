@@ -1,4 +1,4 @@
-package com.platsguru.db.config;
+package com.plantsguru.db.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -40,7 +40,7 @@ public class PlantsGuruConfig {
   ) {
     return builder
       .dataSource(dataSource)
-      .packages("com.plantsguru.domain")
+      .packages("com.plantsguru.model")
       .persistenceUnit("pg")
       .build();
   }

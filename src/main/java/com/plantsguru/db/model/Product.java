@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="product")
+@Table(name="product", catalog="ek_ped_ek_zindagi")
 public class Product {
 
 	public Long getId() {

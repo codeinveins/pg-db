@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "oc_order")
+@Table(name = "oc_order", catalog="pg_current_db")
 public class OC_Order {
 
 	@Id

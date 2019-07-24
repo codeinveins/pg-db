@@ -9,7 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="pincode")
+@Table(name="pincode", catalog="ek_ped_ek_zindagi")
 public class Pincode {
 
 	public Long getPincode_Id() {

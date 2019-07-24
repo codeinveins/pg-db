@@ -9,7 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="cart")
+@Table(name="cart", catalog="ek_ped_ek_zindagi")
 public class Cart {
 
 	public Long getCart_Id() {

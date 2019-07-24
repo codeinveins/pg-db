@@ -6,8 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name="oc_order_Status")
-@Table
+@Entity
+@Table(name="oc_order_Status", catalog="pg_current_db")
 public class OC_Order_Status {
 
 	@Id
