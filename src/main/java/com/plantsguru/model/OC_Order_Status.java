@@ -7,11 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="oc_order_Status", catalog="pg_current_db")
+@Table(name="oc_order_status", catalog="db_pg")
 public class OC_Order_Status {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long order_status_id;
 	private Integer language_id;
 	private String name;

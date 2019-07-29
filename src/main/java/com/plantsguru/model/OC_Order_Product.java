@@ -1,21 +1,14 @@
 package com.plantsguru.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="oc_order_product", catalog="pg_current_db")
+@Table(name="oc_order_product", catalog="db_pg")
 public class OC_Order_Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long order_product_id;
 	private Long order_id;
 	private Long product_id;
@@ -26,12 +19,6 @@ public class OC_Order_Product {
 	private Float total; //TODO: decimal(15,4)
 	private Float tax;	//TODO: decimal(15,4)
 	private Integer reward;
-	private Integer order_status_id;
-	private Integer cor_id;
-	private String awb;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date_modified;
-	
 	public Long getOrder_product_id() {
 		return order_product_id;
 	}
@@ -92,43 +79,14 @@ public class OC_Order_Product {
 	public void setReward(Integer reward) {
 		this.reward = reward;
 	}
-	public Integer getOrder_status_id() {
-		return order_status_id;
-	}
-	public void setOrder_status_id(Integer order_status_id) {
-		this.order_status_id = order_status_id;
-	}
-	public Integer getCor_id() {
-		return cor_id;
-	}
-	public void setCor_id(Integer cor_id) {
-		this.cor_id = cor_id;
-	}
-	public String getAwb() {
-		return awb;
-	}
-	public void setAwb(String awb) {
-		this.awb = awb;
-	}
-	public Date getDate_modified() {
-		return date_modified;
-	}
-	public void setDate_modified(Date date_modified) {
-		this.date_modified = date_modified;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((awb == null) ? 0 : awb.hashCode());
-		result = prime * result + ((cor_id == null) ? 0 : cor_id.hashCode());
-		result = prime * result + ((date_modified == null) ? 0 : date_modified.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((order_id == null) ? 0 : order_id.hashCode());
 		result = prime * result + ((order_product_id == null) ? 0 : order_product_id.hashCode());
-		result = prime * result + ((order_status_id == null) ? 0 : order_status_id.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((product_id == null) ? 0 : product_id.hashCode());
 		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
@@ -146,21 +104,6 @@ public class OC_Order_Product {
 		if (getClass() != obj.getClass())
 			return false;
 		OC_Order_Product other = (OC_Order_Product) obj;
-		if (awb == null) {
-			if (other.awb != null)
-				return false;
-		} else if (!awb.equals(other.awb))
-			return false;
-		if (cor_id == null) {
-			if (other.cor_id != null)
-				return false;
-		} else if (!cor_id.equals(other.cor_id))
-			return false;
-		if (date_modified == null) {
-			if (other.date_modified != null)
-				return false;
-		} else if (!date_modified.equals(other.date_modified))
-			return false;
 		if (model == null) {
 			if (other.model != null)
 				return false;
@@ -180,11 +123,6 @@ public class OC_Order_Product {
 			if (other.order_product_id != null)
 				return false;
 		} else if (!order_product_id.equals(other.order_product_id))
-			return false;
-		if (order_status_id == null) {
-			if (other.order_status_id != null)
-				return false;
-		} else if (!order_status_id.equals(other.order_status_id))
 			return false;
 		if (price == null) {
 			if (other.price != null)
@@ -222,8 +160,7 @@ public class OC_Order_Product {
 	public String toString() {
 		return "OC_Order_Product [order_product_id=" + order_product_id + ", order_id=" + order_id + ", product_id="
 				+ product_id + ", name=" + name + ", model=" + model + ", quantity=" + quantity + ", price=" + price
-				+ ", total=" + total + ", tax=" + tax + ", reward=" + reward + ", order_status_id=" + order_status_id
-				+ ", cor_id=" + cor_id + ", awb=" + awb + ", date_modified=" + date_modified + "]";
+				+ ", total=" + total + ", tax=" + tax + ", reward=" + reward + "]";
 	}
 	
 	

@@ -2,36 +2,26 @@ package com.plantsguru.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "oc_order", catalog="pg_current_db")
+@Table(name = "oc_order", catalog = "db_pg")
 public class OC_Order {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long order_id;
 
-	@Column(name="incoice_no", columnDefinition="default 0")
 	private Integer invoice_no;
-	@Column(name="invoice_prefix", columnDefinition="default 0")
 	private String invoice_prefix;
-	
 	private Integer store_id;
 	private String store_name;
 	private String store_url;
-	
-	@Column(name="customer_id", columnDefinition="default 0")
-	private Integer customer_id;
-	@Column(name="customer_group_id", columnDefinition="default 0")
 
+	private Integer customer_id;
 	private Integer customer_group_id;
 	private String firstname;
 	private String lastname;
@@ -50,6 +40,7 @@ public class OC_Order {
 	private String payment_zone;
 	private Integer payment_zone_id;
 	private String payment_address_format;
+	private String payment_custom_field;
 	private String payment_method;
 	private String payment_code;
 	private String shipping_firstname;
@@ -64,33 +55,31 @@ public class OC_Order {
 	private String shipping_zone;
 	private Integer shipping_zone_id;
 	private String shipping_address_format;
+	private String shipping_custom_field;
 	private String shipping_method;
 	private String shipping_code;
 	private String comment;
 	private Float total; // TODO: check decimal(15,4)
 	private Integer order_status_id;
 	private Integer affiliate_id;
-	private Float commission; //TODO: check decimal(15,4)
+	private Float commission; // TODO: check decimal(15,4)
 	private Integer language_id;
 	private Integer currency_id;
 	private String currency_code;
-	private Float currency_value; //TODO: check decimal(15,8)
+	private Float currency_value; // TODO: check decimal(15,8)
 	private String ip;
 	private String forwarded_ip;
 	private String user_agent;
 	private String accept_language;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_added;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_modified;
-	
+
 	private String custom_field;
-	private Integer marketing_id;
-	private String payment_custom_field;
-	private String shipping_custom_field;
-	private String tracking;
-	
+	private Long courier_id;
+	private String awbno;
 	public Long getOrder_id() {
 		return order_id;
 	}
@@ -433,39 +422,31 @@ public class OC_Order {
 	public void setCustom_field(String custom_field) {
 		this.custom_field = custom_field;
 	}
-	public Integer getMarketing_id() {
-		return marketing_id;
+	public Long getCourier_id() {
+		return courier_id;
 	}
-	public void setMarketing_id(Integer marketing_id) {
-		this.marketing_id = marketing_id;
+	public void setCourier_id(Long courier_id) {
+		this.courier_id = courier_id;
 	}
-	public String getPayment_custom_field() {
-		return payment_custom_field;
+	public String getAwbno() {
+		return awbno;
 	}
-	public void setPayment_custom_field(String payment_custom_field) {
-		this.payment_custom_field = payment_custom_field;
-	}
-	public String getShipping_custom_field() {
-		return shipping_custom_field;
-	}
-	public void setShipping_custom_field(String shipping_custom_field) {
-		this.shipping_custom_field = shipping_custom_field;
-	}
-	public String getTracking() {
-		return tracking;
-	}
-	public void setTracking(String tracking) {
-		this.tracking = tracking;
+	public void setAwbno(String awbno) {
+		this.awbno = awbno;
 	}
 	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((accept_language == null) ? 0 : accept_language.hashCode());
 		result = prime * result + ((affiliate_id == null) ? 0 : affiliate_id.hashCode());
+		result = prime * result + ((awbno == null) ? 0 : awbno.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + ((commission == null) ? 0 : commission.hashCode());
+		result = prime * result + ((courier_id == null) ? 0 : courier_id.hashCode());
 		result = prime * result + ((currency_code == null) ? 0 : currency_code.hashCode());
 		result = prime * result + ((currency_id == null) ? 0 : currency_id.hashCode());
 		result = prime * result + ((currency_value == null) ? 0 : currency_value.hashCode());
@@ -483,7 +464,6 @@ public class OC_Order {
 		result = prime * result + ((ip == null) ? 0 : ip.hashCode());
 		result = prime * result + ((language_id == null) ? 0 : language_id.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
-		result = prime * result + ((marketing_id == null) ? 0 : marketing_id.hashCode());
 		result = prime * result + ((order_id == null) ? 0 : order_id.hashCode());
 		result = prime * result + ((order_status_id == null) ? 0 : order_status_id.hashCode());
 		result = prime * result + ((payment_address_1 == null) ? 0 : payment_address_1.hashCode());
@@ -494,7 +474,6 @@ public class OC_Order {
 		result = prime * result + ((payment_company == null) ? 0 : payment_company.hashCode());
 		result = prime * result + ((payment_country == null) ? 0 : payment_country.hashCode());
 		result = prime * result + ((payment_country_id == null) ? 0 : payment_country_id.hashCode());
-		result = prime * result + ((payment_custom_field == null) ? 0 : payment_custom_field.hashCode());
 		result = prime * result + ((payment_firstname == null) ? 0 : payment_firstname.hashCode());
 		result = prime * result + ((payment_lastname == null) ? 0 : payment_lastname.hashCode());
 		result = prime * result + ((payment_method == null) ? 0 : payment_method.hashCode());
@@ -509,7 +488,6 @@ public class OC_Order {
 		result = prime * result + ((shipping_company == null) ? 0 : shipping_company.hashCode());
 		result = prime * result + ((shipping_country == null) ? 0 : shipping_country.hashCode());
 		result = prime * result + ((shipping_country_id == null) ? 0 : shipping_country_id.hashCode());
-		result = prime * result + ((shipping_custom_field == null) ? 0 : shipping_custom_field.hashCode());
 		result = prime * result + ((shipping_firstname == null) ? 0 : shipping_firstname.hashCode());
 		result = prime * result + ((shipping_lastname == null) ? 0 : shipping_lastname.hashCode());
 		result = prime * result + ((shipping_method == null) ? 0 : shipping_method.hashCode());
@@ -521,7 +499,6 @@ public class OC_Order {
 		result = prime * result + ((store_url == null) ? 0 : store_url.hashCode());
 		result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
 		result = prime * result + ((total == null) ? 0 : total.hashCode());
-		result = prime * result + ((tracking == null) ? 0 : tracking.hashCode());
 		result = prime * result + ((user_agent == null) ? 0 : user_agent.hashCode());
 		return result;
 	}
@@ -544,6 +521,11 @@ public class OC_Order {
 				return false;
 		} else if (!affiliate_id.equals(other.affiliate_id))
 			return false;
+		if (awbno == null) {
+			if (other.awbno != null)
+				return false;
+		} else if (!awbno.equals(other.awbno))
+			return false;
 		if (comment == null) {
 			if (other.comment != null)
 				return false;
@@ -553,6 +535,11 @@ public class OC_Order {
 			if (other.commission != null)
 				return false;
 		} else if (!commission.equals(other.commission))
+			return false;
+		if (courier_id == null) {
+			if (other.courier_id != null)
+				return false;
+		} else if (!courier_id.equals(other.courier_id))
 			return false;
 		if (currency_code == null) {
 			if (other.currency_code != null)
@@ -639,11 +626,6 @@ public class OC_Order {
 				return false;
 		} else if (!lastname.equals(other.lastname))
 			return false;
-		if (marketing_id == null) {
-			if (other.marketing_id != null)
-				return false;
-		} else if (!marketing_id.equals(other.marketing_id))
-			return false;
 		if (order_id == null) {
 			if (other.order_id != null)
 				return false;
@@ -693,11 +675,6 @@ public class OC_Order {
 			if (other.payment_country_id != null)
 				return false;
 		} else if (!payment_country_id.equals(other.payment_country_id))
-			return false;
-		if (payment_custom_field == null) {
-			if (other.payment_custom_field != null)
-				return false;
-		} else if (!payment_custom_field.equals(other.payment_custom_field))
 			return false;
 		if (payment_firstname == null) {
 			if (other.payment_firstname != null)
@@ -769,11 +746,6 @@ public class OC_Order {
 				return false;
 		} else if (!shipping_country_id.equals(other.shipping_country_id))
 			return false;
-		if (shipping_custom_field == null) {
-			if (other.shipping_custom_field != null)
-				return false;
-		} else if (!shipping_custom_field.equals(other.shipping_custom_field))
-			return false;
 		if (shipping_firstname == null) {
 			if (other.shipping_firstname != null)
 				return false;
@@ -829,11 +801,6 @@ public class OC_Order {
 				return false;
 		} else if (!total.equals(other.total))
 			return false;
-		if (tracking == null) {
-			if (other.tracking != null)
-				return false;
-		} else if (!tracking.equals(other.tracking))
-			return false;
 		if (user_agent == null) {
 			if (other.user_agent != null)
 				return false;
@@ -841,7 +808,6 @@ public class OC_Order {
 			return false;
 		return true;
 	}
-	
 	@Override
 	public String toString() {
 		return "OC_Order [order_id=" + order_id + ", invoice_no=" + invoice_no + ", invoice_prefix=" + invoice_prefix
@@ -853,24 +819,35 @@ public class OC_Order {
 				+ ", payment_address_2=" + payment_address_2 + ", payment_city=" + payment_city + ", payment_postcode="
 				+ payment_postcode + ", payment_country=" + payment_country + ", payment_country_id="
 				+ payment_country_id + ", payment_zone=" + payment_zone + ", payment_zone_id=" + payment_zone_id
-				+ ", payment_address_format=" + payment_address_format + ", payment_method=" + payment_method
-				+ ", payment_code=" + payment_code + ", shipping_firstname=" + shipping_firstname
-				+ ", shipping_lastname=" + shipping_lastname + ", shipping_company=" + shipping_company
-				+ ", shipping_address_1=" + shipping_address_1 + ", shipping_address_2=" + shipping_address_2
-				+ ", shipping_city=" + shipping_city + ", shipping_postcode=" + shipping_postcode
-				+ ", shipping_country=" + shipping_country + ", shipping_country_id=" + shipping_country_id
-				+ ", shipping_zone=" + shipping_zone + ", shipping_zone_id=" + shipping_zone_id
-				+ ", shipping_address_format=" + shipping_address_format + ", shipping_method=" + shipping_method
+				+ ", payment_address_format=" + payment_address_format + ", payment_custom_field="
+				+ payment_custom_field + ", payment_method=" + payment_method + ", payment_code=" + payment_code
+				+ ", shipping_firstname=" + shipping_firstname + ", shipping_lastname=" + shipping_lastname
+				+ ", shipping_company=" + shipping_company + ", shipping_address_1=" + shipping_address_1
+				+ ", shipping_address_2=" + shipping_address_2 + ", shipping_city=" + shipping_city
+				+ ", shipping_postcode=" + shipping_postcode + ", shipping_country=" + shipping_country
+				+ ", shipping_country_id=" + shipping_country_id + ", shipping_zone=" + shipping_zone
+				+ ", shipping_zone_id=" + shipping_zone_id + ", shipping_address_format=" + shipping_address_format
+				+ ", shipping_custom_field=" + shipping_custom_field + ", shipping_method=" + shipping_method
 				+ ", shipping_code=" + shipping_code + ", comment=" + comment + ", total=" + total
 				+ ", order_status_id=" + order_status_id + ", affiliate_id=" + affiliate_id + ", commission="
 				+ commission + ", language_id=" + language_id + ", currency_id=" + currency_id + ", currency_code="
 				+ currency_code + ", currency_value=" + currency_value + ", ip=" + ip + ", forwarded_ip=" + forwarded_ip
 				+ ", user_agent=" + user_agent + ", accept_language=" + accept_language + ", date_added=" + date_added
-				+ ", date_modified=" + date_modified + ", custom_field=" + custom_field + ", marketing_id="
-				+ marketing_id + ", payment_custom_field=" + payment_custom_field + ", shipping_custom_field="
-				+ shipping_custom_field + ", tracking=" + tracking + "]";
+				+ ", date_modified=" + date_modified + ", custom_field=" + custom_field + ", courier_id=" + courier_id
+				+ ", awbno=" + awbno + "]";
 	}
-
+	public String getPayment_custom_field() {
+		return payment_custom_field;
+	}
+	public void setPayment_custom_field(String payment_custom_field) {
+		this.payment_custom_field = payment_custom_field;
+	}
+	public String getShipping_custom_field() {
+		return shipping_custom_field;
+	}
+	public void setShipping_custom_field(String shipping_custom_field) {
+		this.shipping_custom_field = shipping_custom_field;
+	}
 	
 	
 }

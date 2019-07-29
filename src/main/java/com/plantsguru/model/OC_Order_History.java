@@ -12,11 +12,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="oc_order_history", catalog="pg_current_db")
+@Table(name="oc_order_history", catalog="db_pg")
 public class OC_Order_History {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long order_history_id;
 	private Long order_id;
 	private Integer order_status_id;
